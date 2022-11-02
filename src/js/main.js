@@ -48,11 +48,12 @@ function handleClick(listItemContainer, finishedItem) {
   todoItems.splice(index, 1);
   console.log(doneItem + ": klar");
   // tömmer listan inför nästa loop
-  todoContainer.innerHTML = " ";
+
   isItDone(doneItem);
 }
 // när en item klickas ska if satsen kolla om värdet är true och då splice
 function isItDone(doneItem) {
+  todoContainer.innerHTML = " ";
   todoList();
   if ((doneItem.finished = true)) {
     console.log("true");
@@ -71,5 +72,4 @@ function doneList(doneItem) {
   // doneItemContainer.addEventListener("click", () => {
   //   back(doneItemContainer, doneItem[i]);
   // });
-  todoList();
 }
