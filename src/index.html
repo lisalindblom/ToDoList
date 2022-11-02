@@ -6,11 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script defer src="js/main.js"></script>
+    <link rel="stylesheet" href="scss/main.scss" />
   </head>
   <body>
-    <ul id="theList"></ul>
-    <input type="text" id="addTodo" />
-    <button type="button" id="addToList">Lägg till</button>
-    <ul id="doneList"></ul>
+    <div class="container">
+      <h2 id="toDo">Att göra:</h2>
+      <ul id="theList"></ul>
+      <input type="text" id="addTodo" />
+      <button type="button" id="addToList">Lägg till</button>
+      <h2 id="done">Färdigt:</h2>
+      <ul id="doneList"></ul>
+    </div>
   </body>
 </html>

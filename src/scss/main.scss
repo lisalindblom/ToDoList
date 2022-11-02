@@ -1,5 +1,24 @@
-.theList {
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkcyan;
+}
+
+.container {
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
+    background-color: rgb(189, 222, 222);
+    padding: 20px;
+    margin-top: 20px;
+    width: 50vw;
+
+}
+h2 {
+    align-self: center;
+}
+
+ul {
+    //list-style-type: none;
+    min-height: 15vh;
 }

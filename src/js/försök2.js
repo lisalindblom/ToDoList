@@ -37,27 +37,20 @@ function todoList() {
   }
 }
 
-function handleClick(listItemContainer, finishedItem) {
-  let index = todoItems.indexOf(finishedItem);
-  JSON.stringify(finishedItem);
+function handleClick(listItemContainer, done) {
+  JSON.stringify(done);
+  let index = todoItems.indexOf(done);
 
   //lägger väret för done item i en variabel för att kunna skicka den till doneList
-  let doneItem = finishedItem.item;
-  doneItem.finished = true;
+  let doneItem = done.item;
   // splice för att ta bort objektet användaren klickat på
   todoItems.splice(index, 1);
   console.log(doneItem + ": klar");
   // tömmer listan inför nästa loop
   todoContainer.innerHTML = " ";
-  isItDone(doneItem);
-}
-// när en item klickas ska if satsen kolla om värdet är true och då splice
-function isItDone(doneItem) {
+
   todoList();
-  if ((doneItem.finished = true)) {
-    console.log("true");
-    doneList(doneItem);
-  }
+  doneList(doneItem);
 }
 
 function doneList(doneItem) {
@@ -71,5 +64,4 @@ function doneList(doneItem) {
   // doneItemContainer.addEventListener("click", () => {
   //   back(doneItemContainer, doneItem[i]);
   // });
-  todoList();
 }
