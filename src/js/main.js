@@ -1,4 +1,5 @@
-let listContainer = document.getElementById("theList");
+let todoContainer = document.getElementById("theList");
+let doneContainer = document.getElementById("doneList");
 let addTodo = document.getElementById("addTodo");
 
 class Todo {
@@ -9,7 +10,7 @@ class Todo {
 }
 
 // skapar nya object i listan
-let listItems = [
+let todoItems = [
   new Todo("städa", false),
   new Todo("tvätta", false),
   new Todo("plugga", false),
@@ -21,31 +22,38 @@ window.onload = () => {
 };
 
 function todoList() {
-  for (let i = 0; i < listItems.length; i++) {
+  for (let i = 0; i < todoItems.length; i++) {
     let listItemContainer = document.createElement("li");
-    JSON.stringify(listItems.item);
-    listItemContainer.innerHTML = listItems[i].item;
+    JSON.stringify(todoItems.item);
+    listItemContainer.innerHTML = todoItems[i].item;
     listItemContainer.classList.add("clickable");
-    listContainer.appendChild(listItemContainer);
+    todoContainer.appendChild(listItemContainer);
     listItemContainer.addEventListener("click", () => {
-      handleClick(listItemContainer, listItems[i]);
+      handleClick(listItemContainer, todoItems[i]);
     });
   }
 }
+
 function handleClick(listItemContainer, done) {
   JSON.stringify(done);
   console.log(done.item + ": klar");
-  let index = listItems.indexOf(done);
+  let index = todoItems.indexOf(done);
 
-  //   let doneList = document.getElementById("doneList");
-  //   let doneItem = document.createElement("li");
-  //   doneList = document.appendChild(doneItem);
-  //   let doneContent = listItems.splice(done, 1);
-  //   doneItem.innerHTML = doneList;
-
+  //lägger väret för done item i en variabel för att kunna skicka den till doneList
+  let doneItem = done.item;
   // splice för att ta bort ibjektet användaren klickat på
-  let doneItem = listItems.splice(index, 1);
+  todoItems.splice(index, 1);
+  console.log(doneItem);
   // tömmer listan inför nästa loop
-  listContainer.innerHTML = " ";
+  todoContainer.innerHTML = " ";
+
   todoList();
+  doneList(doneItem);
+}
+
+function doneList(doneItem) {
+  let doneItemcontainer = document.createElement("li");
+  doneContainer.appendChild(doneItemcontainer);
+  JSON.stringify(doneItem.item);
+  doneItemcontainer.innerHTML = doneItem;
 }
