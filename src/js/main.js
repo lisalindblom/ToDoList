@@ -1,7 +1,9 @@
 let todoContainer = document.getElementById("theList");
 let doneContainer = document.getElementById("doneList");
-//min inputtag
-//let addTodo = document.getElementById("addTodo");
+//min button
+let addTodo = document.getElementById("addTodo");
+//inputtagen
+let addItem = document.getElementById("addItem");
 let toDo = document.getElementById("toDo");
 let done = document.getElementById("done");
 
@@ -31,6 +33,7 @@ function todoList() {
     listItemContainer.innerHTML = todoItems[i].item;
     listItemContainer.classList.add("clickable");
     todoContainer.appendChild(listItemContainer);
+
     listItemContainer.addEventListener("click", () => {
       handleClick(listItemContainer, todoItems[i]);
     });
@@ -51,14 +54,16 @@ function handleClick(listItemContainer, finishedItem) {
 
   isItDone(doneItem);
 }
-// när en item klickas ska if satsen kolla om värdet är true och då splice
+
 function isItDone(doneItem) {
-  todoContainer.innerHTML = " ";
-  todoList();
   if ((doneItem.finished = true)) {
     console.log("true");
     doneList(doneItem);
   }
+  // göra en if false lägg till på todolista och hantera klick på klar listan på samma sätt
+  //för att kunna lägga tillbaks dom på todo
+  todoContainer.innerHTML = " ";
+  todoList();
 }
 
 function doneList(doneItem) {
