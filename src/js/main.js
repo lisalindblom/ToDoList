@@ -8,19 +8,23 @@ class Todo {
   }
 }
 
-// pusha in användarens punkter i denna?
-//let newTodoItems = new Todo(addTodo.value, false);
+// skapar nya object i listan
+let listItems = [
+  new Todo("städa", false),
+  new Todo("tvätta", false),
+  new Todo("plugga", false),
+  new Todo("jobba", false),
+];
 
 window.onload = () => {
-  theList();
+  todoList();
 };
-let listItems = ["städa", "tvätta", "plugga", "träna", "jobba"];
 
-function theList() {
+function todoList() {
   for (let i = 0; i < listItems.length; i++) {
     let listItemContainer = document.createElement("li");
-
-    listItemContainer.innerHTML += listItems[i];
+    JSON.stringify(listItems.item);
+    listItemContainer.innerHTML = listItems[i].item;
     listItemContainer.classList.add("clickable");
     listContainer.appendChild(listItemContainer);
     listItemContainer.addEventListener("click", () => {
@@ -28,21 +32,20 @@ function theList() {
     });
   }
 }
-function handleClick(newLi, done) {
-  console.log("du klickade på " + done);
-  newLi.innerHTML = " ";
+function handleClick(listItemContainer, done) {
+  JSON.stringify(done);
+  console.log(done.item + ": klar");
+  let index = listItems.indexOf(done);
 
-  // göra lista att lägga klara todos i så att de sen kan klickas tillbaks,
-  // koppla ihop med vår konstruktor för att kunna pusha in de splicade grejerna
-  //i klar listan. läs om klasser och constructor igen
   //   let doneList = document.getElementById("doneList");
   //   let doneItem = document.createElement("li");
   //   doneList = document.appendChild(doneItem);
-  //let doneContent = listItems.splice(done, 1);
+  //   let doneContent = listItems.splice(done, 1);
   //   doneItem.innerHTML = doneList;
 
-  newList = listItems.splice(done, 1);
-
-  //console.log(doneList);
-  theList(newList);
+  // splice för att ta bort ibjektet användaren klickat på
+  let doneItem = listItems.splice(index, 1);
+  // tömmer listan inför nästa loop
+  listContainer.innerHTML = " ";
+  todoList();
 }
