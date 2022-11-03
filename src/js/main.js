@@ -6,12 +6,7 @@ let doneContainer = document.getElementById("doneList");
 let toDo = document.getElementById("toDo");
 let done = document.getElementById("done");
 
-// class Todo {
-//   constructor(item, finished) {
-//     this.item = item;
-//     this.finished = finished;
-//   }
-// }
+let todoAgain = " ";
 
 // skapar nya object i listan
 let todoItems = [
@@ -25,7 +20,7 @@ window.onload = () => {
   todoList();
 };
 
-function todoList() {
+function todoList(todoAgain) {
   for (let i = 0; i < todoItems.length; i++) {
     let listItemContainer = document.createElement("li");
     JSON.stringify(todoItems.item);
@@ -46,10 +41,10 @@ let addItem = document.getElementById("addItem").value;
 
 addTodo.addEventListener("click", addByUser);
 
-function addByUser() {
+function addByUser(addItem) {
   let itemAdded = new Todo(addItem, false);
+  todoItems.push(itemAdded);
   console.log(itemAdded);
-  // skapa li tag,
 }
 
 function handleClick(listItemContainer, finishedItem) {
@@ -85,11 +80,19 @@ function doneList(doneItem) {
   JSON.stringify(doneItem.item);
   doneItemContainer.innerHTML = doneItem;
 
+  console.log("klick");
+
   doneItemContainer.addEventListener("click", () => {
     back(doneItemContainer, doneItem);
   });
 }
 
 function back(doneItemContainer, todoAgain) {
-  todoAgain = true;
+  let todoItemAgain = new Todo(todoAgain, false);
+  console.log(todoItemAgain);
+  todoItems.push(todoItemAgain);
+
+  todoContainer.innerHTML = " ";
+
+  todoList();
 }
