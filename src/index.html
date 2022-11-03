@@ -5,22 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script defer src="js/main.js"></script>
+    <script defer src="js/main.js" type="module"></script>
     <link rel="stylesheet" href="scss/main.scss" />
   </head>
   <body>
     <div class="container">
       <h2 id="toDo">Att göra:</h2>
       <ul id="theList"></ul>
-      <form >
-
+      <form>
         <input
-        type="text" 
-        placeholder="skriv en sak att göra"
-        id="addItem"
-        value=""
+          type="text"
+          placeholder="skriv en sak att göra"
+          id="addItem"
+          value=""
         />
-        <input type="submit" id="addTodo" value="Lägg till"></input>
+        <input type="submit" id="addTodo" value="Lägg till" />
       </form>
       <h2 id="done">Färdigt:</h2>
       <ul id="doneList"></ul>

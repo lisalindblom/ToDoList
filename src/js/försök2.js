@@ -1,7 +1,7 @@
 let todoContainer = document.getElementById("theList");
 let doneContainer = document.getElementById("doneList");
 //min inputtag
-//let addTodo = document.getElementById("addTodo");
+let addTodo = document.getElementById("addTodo");
 let toDo = document.getElementById("toDo");
 let done = document.getElementById("done");
 

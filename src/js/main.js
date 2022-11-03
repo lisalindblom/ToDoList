@@ -1,18 +1,17 @@
+import { Todo } from "./models/Todo";
+
 let todoContainer = document.getElementById("theList");
 let doneContainer = document.getElementById("doneList");
-//min button
-let addTodo = document.getElementById("addTodo");
-//inputtagen
-let addItem = document.getElementById("addItem");
+
 let toDo = document.getElementById("toDo");
 let done = document.getElementById("done");
 
-class Todo {
-  constructor(item, finished) {
-    this.item = item;
-    this.finished = finished;
-  }
-}
+// class Todo {
+//   constructor(item, finished) {
+//     this.item = item;
+//     this.finished = finished;
+//   }
+// }
 
 // skapar nya object i listan
 let todoItems = [
@@ -40,6 +39,19 @@ function todoList() {
   }
 }
 
+//min button
+let addTodo = document.getElementById("addTodo");
+//inputtagen
+let addItem = document.getElementById("addItem").value;
+
+addTodo.addEventListener("click", addByUser);
+
+function addByUser() {
+  let itemAdded = new Todo(addItem, false);
+  console.log(itemAdded);
+  // skapa li tag,
+}
+
 function handleClick(listItemContainer, finishedItem) {
   let index = todoItems.indexOf(finishedItem);
   JSON.stringify(finishedItem);
@@ -50,7 +62,6 @@ function handleClick(listItemContainer, finishedItem) {
   // splice för att ta bort objektet användaren klickat på
   todoItems.splice(index, 1);
   console.log(doneItem + ": klar");
-  // tömmer listan inför nästa loop
 
   isItDone(doneItem);
 }
@@ -74,7 +85,11 @@ function doneList(doneItem) {
   JSON.stringify(doneItem.item);
   doneItemContainer.innerHTML = doneItem;
 
-  // doneItemContainer.addEventListener("click", () => {
-  //   back(doneItemContainer, doneItem[i]);
-  // });
+  doneItemContainer.addEventListener("click", () => {
+    back(doneItemContainer, doneItem);
+  });
+}
+
+function back(doneItemContainer, todoAgain) {
+  todoAgain = true;
 }
