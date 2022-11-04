@@ -53,7 +53,7 @@ function addByUser() {
 function handleClick(finishedItem) {
   let index = todoItems.indexOf(finishedItem);
 
-  //lägger väret för done item i en variabel för att kunna skicka den till doneList
+  //lägger värdet för done item i en variabel för att kunna skicka den till doneList
   let doneItem = finishedItem.item;
   doneItem.finished = true;
   // splice för att ta bort objektet användaren klickat på
