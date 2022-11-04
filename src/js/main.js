@@ -8,7 +8,6 @@ let done = document.getElementById("done");
 
 let todoAgain = " ";
 
-// skapar nya object i listan
 let todoItems = [
   new Todo("städa", false),
   new Todo("tvätta", false),
@@ -29,27 +28,30 @@ function todoList(todoAgain) {
     todoContainer.appendChild(listItemContainer);
 
     listItemContainer.addEventListener("click", () => {
-      handleClick(listItemContainer, todoItems[i]);
+      handleClick(todoItems[i]);
     });
   }
 }
 
-//min button
 let addTodo = document.getElementById("addTodo");
-//inputtagen
-let addItem = document.getElementById("addItem").value;
+let addItem = document.getElementById("addItem");
 
-addTodo.addEventListener("click", addByUser);
+addTodo.addEventListener("click", () => {
+  addByUser();
+});
 
-function addByUser(addItem) {
-  let itemAdded = new Todo(addItem, false);
+function addByUser() {
+  let itemAdded = new Todo(addItem.value, false);
   todoItems.push(itemAdded);
   console.log(itemAdded);
+  console.log(itemAdded.item);
+  addItem.value = "";
+  todoContainer.innerHTML = "";
+  todoList();
 }
 
-function handleClick(listItemContainer, finishedItem) {
+function handleClick(finishedItem) {
   let index = todoItems.indexOf(finishedItem);
-  JSON.stringify(finishedItem);
 
   //lägger väret för done item i en variabel för att kunna skicka den till doneList
   let doneItem = finishedItem.item;
@@ -63,11 +65,12 @@ function handleClick(listItemContainer, finishedItem) {
 
 function isItDone(doneItem) {
   if ((doneItem.finished = true)) {
-    console.log("true");
+    //console.log("true");
     doneList(doneItem);
   }
-  // göra en if false lägg till på todolista och hantera klick på klar listan på samma sätt
-  //för att kunna lägga tillbaks dom på todo
+  // göra en if false lägg till på todolista och hantera klick på klar
+  //listan på samma sätt för att kunna lägga tillbaks dom på todo
+
   todoContainer.innerHTML = " ";
   todoList();
 }
@@ -77,22 +80,19 @@ function doneList(doneItem) {
   doneContainer.appendChild(doneItemContainer);
   doneItemContainer.classList.add("clickable");
 
-  JSON.stringify(doneItem.item);
   doneItemContainer.innerHTML = doneItem;
 
-  console.log("klick");
-
   doneItemContainer.addEventListener("click", () => {
-    back(doneItemContainer, doneItem);
+    doneItemContainer.innerHTML = " ";
+    back(doneItem);
   });
 }
 
-function back(doneItemContainer, todoAgain) {
+function back(todoAgain) {
   let todoItemAgain = new Todo(todoAgain, false);
   console.log(todoItemAgain);
   todoItems.push(todoItemAgain);
 
   todoContainer.innerHTML = " ";
-
   todoList();
 }
